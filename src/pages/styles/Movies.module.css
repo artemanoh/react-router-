@@ -1,0 +1,37 @@
+.moviesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: sans-serif;
+}
+
+.moviesForm {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.moviesInput {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 250px;
+}
+
+.moviesButton {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.moviesButton:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
