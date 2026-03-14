@@ -1,16 +1,35 @@
-import styles from "./styles/Home.module.css"
+import { useEffect, useState } from 'react';
+import styles from './styles/Home.module.css';
 
-const Home = () => {
+function Home() {
+  const [movies, setMovies] = useState([]);
+
+  const fetchTrendingMovies = async () => {
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=6bd523e665e7f7e0cb0d9acc510c8844`
+      );
+      const data = await response.json();
+      return data.results || [];
+    } catch (error) {
+      console.error('Помилка при отриманні трендових фільмів:', error);
+      return [];
+    }
+  };
+
+  useEffect(() => {
+    fetchTrendingMovies().then(setMovies);
+  }, []);
   return (
-  <div className={styles.homeContainer}>
-    <h2 className={styles.homeTitle}>Trending Today</h2>
-    <ul className={styles.homeList}>
-        <li className={styles.homeListItem}>Lion</li>
-        <li className={styles.homeListItem}>lion</li>
-        <li className={styles.homeListItem}>lion</li>
-    </ul>
-  </div>
+    <div className={styles.homeContainer}>
+      <h2 className={styles.homeTitle}>Trending Today</h2>
+      <ul className={styles.homeList}>
+        {movies.map((movie) => (
+          <li key={movie.id} className={styles.homeListItem}>{movie.title}</li>
+        ))}
+      </ul>
+    </div>
   );
-};
+}
 
 export default Home;
