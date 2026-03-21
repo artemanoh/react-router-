@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './styles/Home.module.css';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -24,8 +25,12 @@ function Home() {
     <div className={styles.homeContainer}>
       <h2 className={styles.homeTitle}>Trending Today</h2>
       <ul className={styles.homeList}>
-        {movies.map((movie) => (
-          <li key={movie.id} className={styles.homeListItem}>{movie.title}</li>
+        {movies.map(movie => (
+          <Link className={styles.redirect} to={`/movies/${movie.id}`}>
+            <li key={movie.id} className={styles.homeListItem}>
+              {movie.title}
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import styles from './styles/Movies.module.css';
+import { Link, useParams } from 'react-router-dom';
 
-function Movies (){
+function Movies() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
 
@@ -19,13 +20,15 @@ function Movies (){
 
   const searchMovies = async query => {
     try {
-    const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=6bd523e665e7f7e0cb0d9acc510c8844&query=${query}`);
-    const data = await response.json();
-    return data.results || [];
-  } catch (error) {
-    console.error('Помилка при пошуку фільмів:', error);
-    return [];
-  }
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=6bd523e665e7f7e0cb0d9acc510c8844&query=${query}`
+      );
+      const data = await response.json();
+      return data.results || [];
+    } catch (error) {
+      console.error('Помилка при пошуку фільмів:', error);
+      return [];
+    }
   };
   return (
     <div className={styles.moviesContainer}>
@@ -43,11 +46,15 @@ function Movies (){
       </form>
       <ul className={styles.movieList}>
         {results.map(movie => (
-          <li className={styles.movieListItem} key={movie.id}>{movie.title}</li>
+          <Link className={styles.redirect} to={`/movies/${movie.id}`}>
+            <li className={styles.movieListItem} key={movie.id}>
+              {movie.title}
+            </li>
+          </Link>
         ))}
       </ul>
     </div>
   );
-};
+}
 
 export default Movies;

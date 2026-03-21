@@ -61,3 +61,8 @@
   transform: scale(1.02);
   background-color: #e0e0e0;
 }
+
+.redirect{
+        text-decoration: none;
+        color: #000;
+}

@@ -1,8 +1,42 @@
-.navigation{
+.navigation {
     display: flex;
     justify-content: center;
     align-items: center;
     width: auto;
     height: 80px;
     gap: 50px;
+    background-color: #ebeaea;
+}
+
+.menuActive {
+    text-decoration: none;
+    color: #6f6e6e;
+    transition-duration: 250ms;
+}
+
+.menu {
+    text-decoration: none;
+    color: #070907;
+    transition-duration: 250ms;
+}
+
+.menu:hover {
+    transform: translateY(-3px);
+    transition-duration: 150ms;
+}
+
+
+.menuActive::after {
+    content: '';
+    height: 2px;
+    background: #000000;
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+}
+
+
+.menuActive:hover {
+    transform: translateY(-3px);
+    transition-duration: 150ms;
 }

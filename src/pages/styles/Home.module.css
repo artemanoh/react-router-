@@ -38,3 +38,8 @@
   transform: scale(1.05);
   background-color: #e0e0e0;
 }
+
+.redirect{
+        text-decoration: none;
+        color: #000;
+}

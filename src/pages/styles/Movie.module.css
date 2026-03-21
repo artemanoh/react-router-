@@ -1,0 +1,67 @@
+.movieContainer{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 50px;
+background-color: #cbc9c9;
+}
+
+.movieBox{
+    padding: 20px;
+border-radius: 7px;
+background-color: #e7e4e4;
+}
+
+.moviePoster{
+    border-radius: 7px;
+    margin-left: 20px;
+width: 350px;
+height: 530px;
+}
+
+.additionalInfo {
+    margin-top: 20px;
+    padding: 10px;
+    margin-left: 20px;
+background-color: #cbc9c9;
+width: 250px;
+border-radius: 5px;
+}
+
+.additionalLinkActive {
+    text-decoration: none;
+    color: #6f6e6e;
+    transition-duration: 250ms;
+}
+
+.additionalLink {
+    text-decoration: none;
+    color: #070907;
+    transition-duration: 250ms;
+}
+
+.additionalLink:hover {
+    transform: translateY(-3px);
+    transition-duration: 150ms;
+}
+
+
+.additionalLinkActive::after {
+    content: '';
+    height: 2px;
+    background: #000000;
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+}
+
+
+.additionalLinkActive:hover {
+    transform: translateY(-3px);
+    transition-duration: 150ms;
+}
+
+.redirect{
+        text-decoration: none;
+        color: #000;
+}
