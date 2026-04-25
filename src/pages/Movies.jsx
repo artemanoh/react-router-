@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import styles from './styles/Movies.module.css';
-import { Link, useParams } from 'react-router-dom';
+import { useLocation, Link, useParams } from 'react-router-dom';
+import { use } from 'react';
 
 function Movies() {
+  const location = useLocation();
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
 
@@ -46,7 +48,7 @@ function Movies() {
       </form>
       <ul className={styles.movieList}>
         {results.map(movie => (
-          <Link className={styles.redirect} to={`/movies/${movie.id}`}>
+          <Link className={styles.redirect} to={`/movies/${movie.id}`} state={{from: location}}>
             <li className={styles.movieListItem} key={movie.id}>
               {movie.title}
             </li>

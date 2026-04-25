@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import styles from './styles/Home.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Home() {
+  const location = useLocation()
   const [movies, setMovies] = useState([]);
 
   const fetchTrendingMovies = async () => {
@@ -26,7 +27,7 @@ function Home() {
       <h2 className={styles.homeTitle}>Trending Today</h2>
       <ul className={styles.homeList}>
         {movies.map(movie => (
-          <Link className={styles.redirect} to={`/movies/${movie.id}`}>
+          <Link className={styles.redirect} to={`/movies/${movie.id}`} state={{from: location}}>
             <li key={movie.id} className={styles.homeListItem}>
               {movie.title}
             </li>

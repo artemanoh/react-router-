@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import styles from './styles/Movie.module.css';
 
 function Movie() {
+  const location = useLocation()
   const [movie, setMovie] = useState();
   let { movieId } = useParams();
+  const backLink = location.state?.from ?? "/movies";
 
   const fetchMovie = async () => {
     try {
@@ -27,6 +29,8 @@ function Movie() {
     <>
       <div className={styles.movieContainer}>
         <div className={styles.movieBoxes}>
+          <div className={styles.backButton}>
+            <Link to={backLink} className={styles.goBack}>← Go back</Link></div>
           <img
             className={styles.moviePoster}
             src={
@@ -52,10 +56,10 @@ function Movie() {
       </div>
       <div className={styles.additionalInfo}>
         <h3 className={styles.additionalTitle}>Additional Information</h3>
-        <Link className={styles.redirect} to={`/movies/${movie.id}/cast`}>
+        <Link className={styles.redirect} to="cast">
           <p className={styles.additionalLink}>Cast</p>
         </Link>
-        <Link className={styles.redirect} to={`/movies/${movie.id}/reviews`}>
+        <Link className={styles.redirect} to="reviews">
           <p className={styles.additionalLink}>Reviews</p>
         </Link>
       </div>
